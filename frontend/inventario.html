@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - Multitech Movimientos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">MULTI<span>TECH</span></div>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="dashboard.html">Estadísticas</a>
+                <a href="productos.html">Productos</a>
+                <a href="inventario.html" class="active">Inventario</a>
+                <a href="#" onclick="logout()" class="btn-logout-text">Salir</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="header-section">
+            <h1 class="dashboard-title">Movimiento de Inventario</h1>
+            <p class="dashboard-subtitle">Registra flujos de stock (Entradas y Salidas) de forma segura.</p>
+        </section>
+
+        <section style="display: flex; justify-content: center; margin-top: 30px;">
+            <div class="glass-card" style="max-width: 500px; width: 100%; padding: 40px;">
+                <form id="form-movimiento" onsubmit="event.preventDefault(); movimiento();">
+                    
+                    <div class="input-field" style="margin-bottom: 25px;">
+                        <label for="producto" style="display: block; margin-bottom: 10px; font-weight: 600;">ID del Producto</label>
+                        <div style="position: relative;">
+                            <input id="producto" type="number" placeholder="Ej: 101" required 
+                                   style="width: 100%; padding: 12px 40px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white;">
+                            <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%);">🆔</span>
+                        </div>
+                        <small style="color: var(--text-dim); font-size: 0.8rem; margin-top: 5px; display: block;">
+                            Consulta el ID en la sección de Productos si no lo conoces.
+                        </small>
+                    </div>
+
+                    <div class="input-field" style="margin-bottom: 25px;">
+                        <label for="tipo" style="display: block; margin-bottom: 10px; font-weight: 600;">Tipo de Operación</label>
+                        <select id="tipo" class="tech-select" 
+                                style="width: 100%; padding: 12px; border-radius: 8px; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); color: white; cursor: pointer;">
+                            <option value="ENTRADA">🟢 ENTRADA (Aumentar stock)</option>
+                            <option value="SALIDA">🔴 SALIDA (Disminuir stock)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-field" style="margin-bottom: 30px;">
+                        <label for="cantidad" style="display: block; margin-bottom: 10px; font-weight: 600;">Cantidad de Unidades</label>
+                        <div style="position: relative;">
+                            <input id="cantidad" type="number" placeholder="0" min="1" required 
+                                   style="width: 100%; padding: 12px 40px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white;">
+                            <span style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%);">🔢</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btn-movimiento" class="btn-primary-full" style="width: 100%;">
+                        Confirmar Transacción
+                    </button>
+                    
+                    <div style="margin-top: 25px; text-align: center;">
+                        <a href="productos.html" style="color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 600;">
+                            ← Volver al Listado de Productos
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" class="toast-notificacion"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

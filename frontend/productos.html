@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multitech - Gestión de Productos</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MULTI<span>TECH</span></a>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="dashboard.html">Estadísticas</a>
+                <a href="productos.html" class="active">Productos</a>
+                <a href="inventario.html">Inventario</a>
+                <a href="#" onclick="cerrarSesion()" class="btn-logout-text">Salir</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="header-section">
+            <h1 class="dashboard-title">Panel de Inventario</h1>
+            <p class="dashboard-subtitle">Administra tu catálogo y visualiza el estado de tus activos.</p>
+        </header>
+
+        <div class="dashboard-grid">
+            
+            <div class="glass-card compact-card">
+                <div class="card-header">
+                    <h3>📊 Análisis de Stock</h3>
+                </div>
+                <div class="chart-container" style="position: relative; height: 250px;">
+                    <canvas id="graficoStock"></canvas>
+                </div>
+            </div>
+
+            <div class="glass-card compact-card">
+                <div class="card-header">
+                    <h3 id="form-title">📦 Registrar Producto</h3>
+                </div>
+                <form id="form-producto" class="form-vertical">
+                    <input type="hidden" id="id-producto">
+                    
+                    <div class="input-field">
+                        <label>Nombre del Producto</label>
+                        <input type="text" id="nombre" placeholder="Ej: Monitor Gamer 24'" required>
+                    </div>
+
+                    <div class="row-inputs" style="display: flex; gap: 15px; margin-top: 15px;">
+                        <div class="input-field" style="flex: 1;">
+                            <label>Stock Inicial</label>
+                            <input type="number" id="stock" placeholder="0" required>
+                        </div>
+                        <div class="input-field" style="flex: 1;">
+                            <label>Precio Unitario ($)</label>
+                            <input type="number" step="0.01" id="precio" placeholder="0.00" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="btn-guardar" class="btn-primary-full" style="margin-top: 20px;">
+                        Guardar Producto
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="glass-card action-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding: 15px 25px;">
+            <div class="search-box" style="flex: 1; max-width: 400px; position: relative;">
+                <input type="text" id="busqueda" placeholder="🔍 Buscar por nombre de producto..." onkeyup="filtrarProductos()" 
+                       style="width: 100%; padding: 10px 15px 10px 40px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white;">
+            </div>
+            <button class="btn-secondary" onclick="exportarExcel()" style="display: flex; align-items: center; gap: 8px;">
+                <span>📄</span> Exportar Reporte Excel
+            </button>
+        </div>
+
+        <div class="table-container glass-card" style="padding: 0; overflow: hidden;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <thead style="background: rgba(255,255,255,0.05);">
+                    <tr>
+                        <th style="padding: 15px; text-align: left;">ID</th>
+                        <th style="padding: 15px; text-align: left;">Producto</th>
+                        <th style="padding: 15px; text-align: left;">Stock</th>
+                        <th style="padding: 15px; text-align: left;">Precio</th>
+                        <th style="padding: 15px; text-align: center;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="lista-productos">
+                    </tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="toast" class="toast-notificacion"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multitech - Inicio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">MULTI<span>TECH</span></div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Inicio</a>
+                <a href="dashboard.html">Estadísticas</a>
+                <a href="productos.html">Productos</a>
+                <a href="inventario.html">Inventario</a>
+                <a href="#" onclick="logout()" style="color: #ef4444;">Salir</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header style="margin-bottom: 40px;">
+            <h1 style="font-size: 2.8rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px;">
+                ¡Hola de nuevo, <span style="color: var(--accent);">Admin</span>!
+            </h1>
+            <p style="color: var(--text-dim); font-size: 1.1rem;">
+                Bienvenido al ecosistema Multitech. Aquí tienes un resumen de tu inventario.
+            </p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="glass-card stat-card">
+                <span class="card-title">Total Productos</span>
+                <div class="card-value" id="total-productos-val">--</div>
+                <span style="color: #10b981; font-size: 0.85rem; font-weight: 600;">En catálogo</span>
+            </div>
+
+            <div class="glass-card stat-card" style="border-left: 4px solid #ef4444;">
+                <span class="card-title">Stock Bajo</span>
+                <div class="card-value" id="stock-bajo-val" style="color: #ef4444;">--</div>
+                <span style="color: var(--text-dim); font-size: 0.85rem;">Requieren atención</span>
+            </div>
+
+            <div class="glass-card stat-card">
+                <span class="card-title">Valor Inventario</span>
+                <div class="card-value" id="valor-inventario-val" style="font-size: 1.8rem;">$0.00</div>
+                <span style="color: var(--accent); font-size: 0.85rem;">Capital total</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <h2 style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 25px; opacity: 0.8;">
+                Operaciones del Sistema
+            </h2>
+            
+            <div class="stats-grid"> 
+                <div class="glass-card action-card" onclick="location.href='productos.html'" style="cursor: pointer;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">📦</div>
+                    <h3 style="margin-bottom: 10px; font-weight: 700;">Gestionar Productos</h3>
+                    <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">
+                        Añade nuevos artículos, edita precios y organiza tu catálogo tecnológico con un clic.
+                    </p>
+                    <span class="action-btn-text">Entrar al almacén →</span>
+                </div>
+
+                <div class="glass-card action-card" onclick="location.href='inventario.html'" style="cursor: pointer;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🔄</div>
+                    <h3 style="margin-bottom: 10px; font-weight: 700;">Registrar Movimientos</h3>
+                    <p style="color: var(--text-dim); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">
+                        Control estricto de entradas y salidas. Registra ventas o abastecimientos en segundos.
+                    </p>
+                    <span class="action-btn-text">Realizar movimiento →</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="toast" class="toast-notificacion"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Multitech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">MULTI<span>TECH</span></div>
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="dashboard.html" class="active">Panel</a>
+                <a href="productos.html">Productos</a>
+                <a href="inventario.html">Inventario</a>
+                <a href="#" onclick="logout()" class="btn-logout">Salir</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <header class="header-section">
+            <h1 class="dashboard-title">Panel de Control</h1>
+            <p class="dashboard-subtitle">Bienvenido al sistema de gestión tecnológica.</p>
+        </header>
+        
+        <div class="stats-grid">
+            <div class="glass-card stat-card" onclick="window.location.href='productos.html'">
+                <div class="card-icon">📦</div>
+                <h3 class="card-title">Productos</h3>
+                <p id="total-productos" class="card-value">0</p>
+                <span class="card-desc">Gestión de productos registrados</span>
+            </div>
+
+            <div class="glass-card stat-card" onclick="window.location.href='productos.html'">
+                <div class="card-icon">📊</div>
+                <h3 class="card-title">Inventario</h3>
+                <p id="stock-total" class="card-value">0</p>
+                <span class="card-desc">Control de stock en tiempo real</span>
+            </div>
+
+            <div class="glass-card stat-card highlight-border">
+                <div class="card-icon">💰</div>
+                <h3 class="card-title">Valor Total</h3>
+                <p id="valor-inventario" class="card-value">$0.00</p>
+                <span class="card-desc">Valorización de activos</span>
+            </div>
+        </div>
+    </main>
+
+    <div id="toast" class="toast-notificacion"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
